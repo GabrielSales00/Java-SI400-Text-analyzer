@@ -3,8 +3,8 @@
 AnalyzerWriter: escrita em um arquivo do dígrafo carregado pela classe anterior 
 em umaestrutura de dados e tratamento de exceções */
 
-import java.io.*
-import java.util.*
+import java.io.*;
+import java.util.*;
 
 public class AnalyzerWriter {
     private String outputFileName;
