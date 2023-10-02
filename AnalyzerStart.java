@@ -9,6 +9,6 @@ public class AnalyzerStart {
         String outputFileName = args[1];
 
         AnalyzerController controller = new AnalyzerController();
-        controller.processarArquivo(inputFileName, outputFileName);
+        controller.processFile(inputFileName, outputFileName);
     }
 }

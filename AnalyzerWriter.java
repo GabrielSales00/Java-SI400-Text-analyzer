@@ -15,27 +15,22 @@ public class AnalyzerWriter {
 
     public void writeCSV(Map<String, List<String>> digraph) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
-            
             for (Map.Entry<String, List<String>> entry : digraph.entrySet()) {
-            
                 String sourceWord = entry.getKey();
                 List<String> destinationWords = entry.getValue();
 
-                StringBuilder destiny = new StringBuilder();
+                StringBuilder destinations = new StringBuilder();
                 for (String destination : destinationWords) {
-            
-                    if (destiny.length() > 0) {
-                        destiny.append(" ");
+                    if (destinations.length() > 0) {
+                        destinations.append(", "); // Use a comma to separate destinations
                     }
-                    
-                    destiny.append(destination);
+                    destinations.append(destination);
                 }
 
-                // Escreve no modelo Gephi
-                String line = sourceWord + " " + destiny.toString();
+                // Write in the Gephi format (comma-separated)
+                String line = sourceWord + ", " + destinations.toString();
                 writer.write(line);
                 writer.newLine();
-                
             }
         } catch (IOException e) {
             e.printStackTrace();
