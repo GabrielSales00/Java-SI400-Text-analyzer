@@ -9,11 +9,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+
 public class AnalyzerReader {
     private Map<String, List<String>> dygraph;
 
     public AnalyzerReader() {
-        this.dygraph = new HashMap<>();
+        this.dygraph = new TreeMap<>();
     }
 
     public void processText(String fileName) throws IOException {
@@ -21,7 +26,7 @@ public class AnalyzerReader {
             String currentLine;
 
             while ((currentLine = br.readLine()) != null) {
-                currentLine = currentLine.toLowerCase().replaceAll("[^a-z ]", "");
+                currentLine = currentLine.toLowerCase().replaceAll("[^a-záãàéíóúñ ]", "");
                 String[] words = currentLine.split("\\s+");
 
                 for (int i = 0; i < words.length - 1; i++) {
@@ -29,18 +34,14 @@ public class AnalyzerReader {
                     String destination = words[i + 1];
 
                     dygraph.putIfAbsent(source, new ArrayList<>());
-                    
+
                     if (!dygraph.get(source).contains(destination)) {
                         dygraph.get(source).add(destination);
+                        Collections.sort(dygraph.get(source)); // Sort the destinations alphabetically
                     }
                 }
             }
         }
-    }
-
-    private void addEdge(String source, String destination) {
-        dygraph.putIfAbsent(source, new ArrayList<>());
-        dygraph.get(source).add(destination);
     }
 
     public Map<String, List<String>> getDygraph() {
