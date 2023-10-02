@@ -10,29 +10,29 @@ import java.util.*;
 
 public class AnalyzerReader {
     //Estruturas de dados pedidas
-    private Map<String, List<String>> digrafo;
+    private Map<String, List<String>> dygraph;
 
     public AnalyzerReader() {
-        this.digrafo = new HashMap<>();
+        this.dygraph = new HashMap<>();
     }
 
     public void ProcessarTexto(String Nome) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(Nome))) {
-            String linhaAtual;
-            String anterior = null;
+            String currentLine;
+            String formerLine = null;
 
-            while ((linhaAtual = br.readLine()) != null) {
-                linhaAtual = linhaAtual.toLowerCase().replaceAll("[^a-zA-Z ]", ""); 
-                StringTokenizer tokenizer = new StringTokenizer(linhaAtual);
+            while ((currentLine = br.readLine()) != null) {
+                currentLine = currentLine.toLowerCase().replaceAll("[^a-zA-Z ]", ""); 
+                StringTokenizer tokenizer = new StringTokenizer(currentLine);
 
                 while (tokenizer.hasMoreTokens()) {
-                    String elemento = tokenizer.nextToken();
-                    anterior = elemento;
+                    String element = tokenizer.nextToken();
+                    formerLine = element;
                 }
             }
         }
     }
-    public Map<String, List<String>> getdigrafo() {
-        return digrafo;
+    public Map<String, List<String>> getdygraph() {
+        return dygraph;
     }
 }
