@@ -1,13 +1,6 @@
-/*                  Atividade em grupo: Text Analyzer
+/*                  Text Analyzer
 
-AnalyzerReader: leitura e tokenização de um arquivo de entrada, carga de uma estrutura de
-dados que represente internamente o dígrafo gerado a partir do texto e tratamentos de
-exceções; */
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
+AnalyzerReader: reads and tokenizes an entry file, loads a data structure that represents a dygraph generated from its text and handles exceptions. */
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -37,7 +30,7 @@ public class AnalyzerReader {
 
                     if (!dygraph.get(source).contains(destination)) {
                         dygraph.get(source).add(destination);
-                        Collections.sort(dygraph.get(source)); // Sort the destinations alphabetically
+                        Collections.sort(dygraph.get(source)); // Sorts the destinations alphabetically
                     }
                 }
             }
